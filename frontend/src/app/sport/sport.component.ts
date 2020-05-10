@@ -10,7 +10,7 @@ import { Weather } from '../weather/weather.model';
     styleUrls: ['./sport.component.scss']
 })
 export class SportComponent implements OnInit {
-    public sports: Sport[];
+    public sports: Sport[] = [];
     public weather: Weather;
 
     constructor(
@@ -46,7 +46,6 @@ export class SportComponent implements OnInit {
 
     private populateWeather(weather: Weather) {
         this.weather = weather;
-        console.log('Weather summary: ', this.weather);
     }
 
     public ratingClass(rating: number) {
