@@ -1,16 +1,14 @@
 a,
-a:visited,
-a:hover {
-  color: #1976d2;
+a:visited {
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
-  color: #125699;
+  color: black;
 }
 
 footer {
-  margin-top: 8px;
   display: flex;
   align-items: center;
   line-height: 20px;

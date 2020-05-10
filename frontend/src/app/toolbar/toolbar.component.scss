@@ -19,11 +19,13 @@
   margin: 0 16px;
 }
 
-.toolbar #twitter-logo {
+.toolbar #instagram-logo {
   height: 40px;
   margin: 0 16px;
+  fill: white;
 }
 
-.toolbar #twitter-logo:hover {
+.toolbar #instagram-logo:hover {
   opacity: 0.8;
+  fill: black;
 }
