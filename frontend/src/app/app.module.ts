@@ -6,6 +6,7 @@ import { SportComponent } from './sport/sport.component';
 import { GreetingComponent } from './greeting/greeting.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { WeatherComponent } from './weather/weather.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FooterComponent } from './footer/footer.component';
     SportComponent,
     GreetingComponent,
     ToolbarComponent,
-    FooterComponent
+    FooterComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,

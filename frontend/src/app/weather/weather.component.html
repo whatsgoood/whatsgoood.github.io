@@ -1,0 +1,36 @@
+<div *ngIf="weather !== null; then serverUp else serverDown"></div>
+<ng-template #serverUp>
+    <a class="card">
+        <span class="card-heading">
+            Live weather
+        </span>
+
+        <img src="../../assets/weather.svg">
+
+        <span class="card-text">
+            Average: {{ weather.avg }} knots
+        </span>
+        <span class="card-text">
+            Low: {{ weather.low }} knots
+        </span>
+        <span class="card-text">
+            High: {{ weather.high }} knots
+        </span>
+        <span class="card-text">
+            Direction: {{ weather.direction }}
+        </span>
+    </a>
+</ng-template>
+<ng-template #serverDown>
+    <a class="card server-down-card">
+        <span class="card-text">
+            Masekind
+        </span>
+
+        <img src="../../assets/server-down.svg">
+
+        <span class="card-text">
+            Can't reach weather service!
+        </span>
+    </a>
+</ng-template>

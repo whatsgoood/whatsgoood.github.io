@@ -11,11 +11,9 @@ import { Weather } from '../weather/weather.model';
 })
 export class SportComponent implements OnInit {
     public sports: Sport[] = [];
-    public weather: Weather;
 
     constructor(
-        private sportService: SportService,
-        private weatherService: WeatherService
+        private sportService: SportService
     ) { }
 
     ngOnInit(): void {
@@ -28,30 +26,16 @@ export class SportComponent implements OnInit {
                     console.log('UI display... ', error);
                 }
             );
-
-        this.weatherService.getWeather()
-            .subscribe(
-                data => {
-                    this.populateWeather(data);
-                },
-                error => {
-                    console.log('UI display... ', error);
-                }
-            );
     }
 
     private populateSportCards(sports: Sport[]) {
-        this.sports = sports.sort((a, b) => b.rating - a.rating);
-    }
-
-    private populateWeather(weather: Weather) {
-        this.weather = weather;
+        this.sports = sports.sort((a, b) => (b.rating - a.rating));
     }
 
     public ratingClass(rating: number) {
-        if (rating > 6) {
+        if (rating > 0.6) {
             return { 'card-green': true }
-        } else if (rating > 3) {
+        } else if (rating > 0.3) {
             return { 'card-orange': true }
         } else {
             return { 'card-red': true }
