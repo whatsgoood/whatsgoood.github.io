@@ -9,7 +9,7 @@ import { Sport } from './sport.model';
     providedIn: 'root'
 })
 export class SportService {
-    private sportUrl = environment.baseApiUrl + 'getSportList';
+    private sportUrl = environment.baseApiUrl + 'ratings';
 
     constructor(
         private http: HttpClient

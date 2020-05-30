@@ -9,7 +9,7 @@ import { Weather } from './weather.model';
     providedIn: 'root'
 })
 export class WeatherService {
-    private weatherUrl = environment.baseApiUrl + 'getWeatherSummary';
+    private weatherUrl = environment.baseApiUrl + 'weather/live';
 
     constructor(
         private http: HttpClient
