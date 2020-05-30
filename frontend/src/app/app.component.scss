@@ -8,12 +8,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.content {
+.toolbar {
+  height: 5vh;
+}
+
+.greeting-card {
   display: flex;
-  margin: 82px auto 32px;
-  padding: 0 16px;
-  max-width: 960px;
+  margin-top: 5vh;
+  height: 30vh;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.sport-cards {
+  display: flex;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-card {
+  display: flex;
+  margin-bottom: 5vh;
+  height: 30vh;
+  justify-content: center;
   align-items: center;
 }
 
@@ -21,7 +40,7 @@
     position: absolute;
     left: 0;
     bottom: 0vh;
-    height: 60px;
+    height: 5vh;
     width: 100%;
     overflow: hidden;
     display: flex;

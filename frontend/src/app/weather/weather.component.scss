@@ -16,27 +16,11 @@
     align-items: center;
     transition: all 0.2s;
     line-height: 24px;
-    background-color: #424242;
+    background-color: #762bd8;
 }
 
 .card:hover {
     height: 200px;
-}
-
-.card-green {
-    background-color: #2bd879;
-}
-
-.card-orange {
-    background-color: #d88d2b;
-}
-
-.card-red {
-    background-color: #d82b2b;
-}
-
-.card-white {
-    background-color: white;
 }
 
 .card-container .card:not(:last-child) {
@@ -51,21 +35,31 @@
     box-shadow: 0px 40px 17px rgba(black, 0.35);
 }
 
+.card-heading {
+    display: block;
+    font-weight: 600;
+}
+
+.card:hover .card-heading {
+    display: none;
+}
+
+
 .card-text {
     display: none;
+    color: white;
 }
 
 .card:hover .card-text {
     display: block;
     font-weight: 600;
-    color: white;
 }
 
 .server-down-card {
+    background-color: #424242;
     height: 200px;
 }
 
 #server-down {
   height: 100px;
-
 }
