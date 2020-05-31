@@ -1,4 +1,4 @@
 export interface Sport {
-    sport: string;
+    name: string;
     rating: number;
 }

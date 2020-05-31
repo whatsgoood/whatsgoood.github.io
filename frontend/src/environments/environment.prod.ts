@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   baseUrl: 'http://localhost:4200/',
-  baseApiUrl: 'https://whatsgoood-prod.herokuapp.com/api/'
+  baseApiUrl: 'http://localhost:4200/api/'
 };
