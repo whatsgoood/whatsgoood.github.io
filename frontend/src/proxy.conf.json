@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "https://whatsgoood-prod.herokuapp.com",
+        "target": "https://whatsgoood-dev.herokuapp.com",
         "secure":true,
         "logLevel": "debug",
         "changeOrigin": true
