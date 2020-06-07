@@ -11,8 +11,8 @@
     margin: 0 8px 16px;
     padding: 16px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
     transition: all 0.2s;
     line-height: 24px;
@@ -20,7 +20,7 @@
 }
 
 .card:hover {
-    height: 200px;
+    height: 70px;
 }
 
 .card-green {
@@ -52,13 +52,7 @@
 }
 
 .card-text {
-    display: none;
-}
-
-.card:hover .card-text {
     display: block;
-    font-weight: 600;
-    color: white;
 }
 
 .server-down-card {
