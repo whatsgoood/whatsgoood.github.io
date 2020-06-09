@@ -1,14 +1,23 @@
 <div class="card-container">
-    <div *ngIf="weather !== null; then serverUp else serverDown"></div>
-    <ng-template #serverUp>
+
+    <div *ngIf="weather === null; then loading else loaded"></div>
+
+    <ng-template #loading>
+
+        <div *ngFor="let i of [0,1,2]">
+            <app-loading-card></app-loading-card>
+        </div>
+
+    </ng-template>
+
+    <ng-template #loaded>
+
         <div>
             <a class="card">
                 <span class="card-heading">
                     Weather
                 </span>
-        
                 <img src="../../assets/weather.svg">
-        
                 <span class="card-text">
                     {{ weather.climateInfo.description }}
                 </span>
@@ -31,9 +40,7 @@
                 <span class="card-heading">
                     Wind
                 </span>
-            
                 <img src="../../assets/wind.svg">
-            
                 <span class="card-text">
                     Average: {{ weather.windInfo.avg }} knots
                 </span>
@@ -56,9 +63,7 @@
                 <span class="card-heading">
                     Wave
                 </span>
-            
                 <img src="../../assets/wave.svg">
-            
                 <span class="card-text">
                     Wave Height (swell): {{ weather.waveInfo.waveSize }} feet
                 </span>
@@ -70,18 +75,7 @@
                 </span>
             </a>
         </div>
+
     </ng-template>
-    <ng-template #serverDown>
-        <a class="card server-down-card">
-            <span class="card-text">
-                Masekind
-            </span>
-    
-            <img src="../../assets/server-down.svg">
-    
-            <span class="card-text">
-                Can't reach weather service!
-            </span>
-        </a>
-    </ng-template>
+
 </div>

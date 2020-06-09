@@ -1,29 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Weather } from './weather.model';
 import { WeatherService } from './weather.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-export class WeatherComponent implements OnInit {
+export class WeatherComponent implements OnInit, OnDestroy {
   public weather: Weather = null;
-
+  public weatherServiceSub: Subscription = null;
+  
   constructor(
     private weatherService: WeatherService
   ) { }
 
   ngOnInit(): void {
-    this.weatherService.getWeather()
+    this.weatherServiceSub = this.weatherService.getWeather()
       .subscribe(
         data => {
           this.populateWeather(data);
         },
         error => {
-          console.log('UI display... ', error);
+          // TODO: Popup/modal of error card
+          this.ngOnDestroy();
         }
       );
+  }
+
+  ngOnDestroy() {
+    this.weatherServiceSub.unsubscribe();
   }
 
   private populateWeather(weather: Weather) {

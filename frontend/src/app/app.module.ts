@@ -7,6 +7,8 @@ import { GreetingComponent } from './greeting/greeting.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { WeatherComponent } from './weather/weather.component';
+import { ErrorCardComponent } from './cards/error-card/error-card.component';
+import { LoadingCardComponent } from './cards/loading-card/loading-card.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { WeatherComponent } from './weather/weather.component';
     GreetingComponent,
     ToolbarComponent,
     FooterComponent,
-    WeatherComponent
+    WeatherComponent,
+    ErrorCardComponent,
+    LoadingCardComponent
   ],
   imports: [
     BrowserModule,
