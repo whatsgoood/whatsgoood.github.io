@@ -1,31 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SportService } from './sport.service';
 import { Sport } from './sport.model';
-import { WeatherService } from '../weather/weather.service';
-import { Weather } from '../weather/weather.model';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-sport',
     templateUrl: './sport.component.html',
     styleUrls: ['./sport.component.scss']
 })
-export class SportComponent implements OnInit {
+export class SportComponent implements OnInit, OnDestroy {
+    
     public sports: Sport[] = [];
+    public sportServiceSub: Subscription = null;
 
     constructor(
         private sportService: SportService
     ) { }
 
     ngOnInit(): void {
-        this.sportService.getSportList()
+        this.sportServiceSub = this.sportService.getSportList()
             .subscribe(
                 data => {
                     this.populateSportCards(data);
                 },
                 error => {
-                    console.log('UI display... ', error);
+                    // TODO: Popup/modal of error card
+                    this.ngOnDestroy();
                 }
             );
+    }
+
+    ngOnDestroy() {
+        this.sportServiceSub.unsubscribe();
     }
 
     private populateSportCards(sports: Sport[]) {
