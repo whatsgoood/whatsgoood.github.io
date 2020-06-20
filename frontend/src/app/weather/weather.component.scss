@@ -11,7 +11,7 @@
     margin: 0 8px 16px;
     padding: 16px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     transition: all 0.2s;
@@ -21,6 +21,7 @@
 
 .card:hover {
     height: 200px;
+    flex-direction: column;
 }
 
 .card-container .card:not(:last-child) {
@@ -38,16 +39,16 @@
 .card-heading {
     display: block;
     font-weight: 600;
+    color: white;
 }
 
 .card:hover .card-heading {
     display: none;
 }
 
-
 .card-text {
     display: none;
-    color: white;
+    color: #eeeeee;
 }
 
 .card:hover .card-text {
