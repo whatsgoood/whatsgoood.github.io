@@ -60,4 +60,8 @@ export class SportComponent implements OnInit, OnDestroy {
         return name === 'Climbing';
     }
 
+    public isCycling(name: string) {
+        return name === 'Cycling';
+    }
+
 }

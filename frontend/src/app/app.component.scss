@@ -9,25 +9,24 @@
     height: 100%;
 }
 
-.sport-cards {
+.content {
     margin-top: 7.5vh;
+    margin-bottom: 7.5vh;
     display: flex;
-    height: 42.5vh;
-    justify-content: center;
+    height: 85vh;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
 }
 
-.weather-card {
-    margin-bottom: 7.5vh;
-    display: flex;
-    height: 42.5vh;
-    justify-content: center;
-    align-items: baseline;
+.windy {
+    border-radius: 20px;
+    height: 400px;
+    width: 974px;
 }
 
 .toolbar,
-.sport-cards,
-.weather-card {
+.content {
     flex: 1 0 auto;
 }
 
@@ -50,6 +49,8 @@
 
 // Mobile device
 @media (max-width: 512px) {
+
+    //TODO: Update similar to desktop
     .sport-cards {
         display: flex;
         height: 400px;
@@ -57,15 +58,19 @@
         align-items: center;
     }
 
-    .weather-card {
+    .content {
+        margin-top: 7.5vh;
+        margin-bottom: 7.5vh;
         display: flex;
-        margin-bottom: 50px;
-        height: 400px;
-        justify-content: center;
-        align-items: baseline;
+        justify-content: space-evenly;
+        align-items: center;
+
     }
 
-    .footer {
-        display: none;
+    .windy {
+        border-radius: 20px;
+        height: 200px;
+        width: 300px;
     }
+
 }
