@@ -4,7 +4,7 @@ This repo serves as the frontend repo for the WhatsGoood web application.
 
 ## Description
 
-The backend is written in Angular 9 with scss. 
+The frontend is written in Angular 9 with scss. 
 We use HTTP services to communicate with the server using REST API endpoints.
 
 ## Getting Started
