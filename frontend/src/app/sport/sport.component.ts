@@ -9,6 +9,10 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./sport.component.scss']
 })
 export class SportComponent implements OnInit, OnDestroy {
+
+    public idvKeys = {};
+    public isExpandedDict = {};
+    public ratingPhrases = ["bad","average","good"]; 
     
     public sports: Sport[] = [];
     public sportServiceSub: Subscription = null;
@@ -39,12 +43,12 @@ export class SportComponent implements OnInit, OnDestroy {
     }
 
     public ratingClass(rating: number) {
-        if (rating > 0.6) {
-            return { 'card-green': true }
+        if (rating > 0.7) {
+            return 'card-green'
         } else if (rating > 0.3) {
-            return { 'card-orange': true }
+            return 'card-orange'
         } else {
-            return { 'card-red': true }
+            return 'card-red'
         }
     }
 
@@ -58,6 +62,35 @@ export class SportComponent implements OnInit, OnDestroy {
 
     public isClimbing(name: string) {
         return name === 'Climbing';
+    }
+
+    public getRatingPhrase(rating){
+
+        var floored = Math.floor(rating / 0.33)
+
+        if (floored > 2) {
+            floored = 2
+        } else if (floored < 0) {
+            floored = 0
+        }
+
+        return floored
+    }
+
+    public toggleExpand(cardIndex) {
+
+        if (this.isExpandedDict[cardIndex]){
+            this.isExpandedDict[cardIndex] = false;
+        } else {
+            this.idvKeys = Object.keys(this.sports[cardIndex].context.idvRatings);
+            this.isExpandedDict[cardIndex] = true;
+        }
+
+        for (let key of Object.keys(this.isExpandedDict)){
+            if (key != cardIndex && this.isExpandedDict[key] == true){
+                this.isExpandedDict[key] = false;
+            }
+        }
     }
 
 }
