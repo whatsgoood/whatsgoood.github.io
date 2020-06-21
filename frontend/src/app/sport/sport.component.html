@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="card-container">
 
     <div *ngIf="sports.length === 0; then loading else loaded"></div>
@@ -12,23 +14,69 @@
 
     <ng-template #loaded>
 
-        <div *ngFor="let sport of sports">
-            <a class="card" [ngClass]="ratingClass(sport.rating)">
-                <img *ngIf="isKiting(sport.name)" src="../../assets/kite.svg">
-                <img *ngIf="isSurfing(sport.name)" src="../../assets/surfing.svg">
-                <img *ngIf="isClimbing(sport.name)" src="../../assets/climbing.svg">
-                <svg viewBox="0 0 36 36" class="circular-chart">
-                    <path class="circle-bg" d="M18 2.0845
-                              a 15.9155 15.9155 0 0 1 0 31.831
-                              a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path class="circle" attr.stroke-dasharray="{{sport.rating * 100 | number:'.0-0'}}, 100" d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <text x="18" y="20.35" class="percentage">{{sport.rating * 100 | number:'.0-0'}}%</text>
-                </svg>
-            </a>
-        </div>
+        <div *ngFor="let sport of sports; let i=index">
+            <div [ngClass]="[isExpandedDict[i] ? 'expanded-card' : 'card', ratingClass(sport.rating)]">
+                <a (click)="toggleExpand(i)" class="card-exit-container">
+                    <span class="expanded-card-heading" *ngIf="isExpandedDict[i]">
+                        {{sport.name}}
+                    </span>
+                    <i *ngIf="isExpandedDict[i]" class="fa card-exit">&#xf00d;</i>
+                </a>
+                <div class='card-graphic-content'>
+                    <img *ngIf="isKiting(sport.name)" src="../../assets/kite.svg">
+                    <img *ngIf="isSurfing(sport.name)" src="../../assets/surfing.svg">
+                    <img *ngIf="isClimbing(sport.name)" src="../../assets/climbing.svg">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle" attr.stroke-dasharray="{{sport.rating * 100 | number:'.0-0'}}, 100" d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <text x="18" y="20.35" class="percentage">{{sport.rating * 100 | number:'.0-0'}}%</text>
+                    </svg>
+                </div>
 
+                <a class="revealText" (click)="toggleExpand(i)">
+                    Why so {{ratingPhrases[getRatingPhrase(sport.rating)]}}?
+                </a>
+
+                <div *ngIf="isExpandedDict[i]">
+                    
+                    <span class="expanded-card-field">
+                        <span class="expanded-card-summary">
+                            {{sport.context.summary}}
+                        </span>
+                    </span>
+                    <br>
+                    <span *ngFor="let key of idvKeys" class="expanded-card-field">
+                        <span *ngIf="sport.context.idvRatings[key].Description != 'No context'"
+                                class='expanded-card-text'>
+                            {{sport.context.idvRatings[key].Description}}
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div *ngIf="isExpandedDict[i]">
+                <div class="card" [ngClass]="ratingClass(sport.rating)">
+                    <div class='card-graphic-content'>
+                        <img *ngIf="isKiting(sport.name)" src="../../assets/kite.svg">
+                        <img *ngIf="isSurfing(sport.name)" src="../../assets/surfing.svg">
+                        <img *ngIf="isClimbing(sport.name)" src="../../assets/climbing.svg">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" attr.stroke-dasharray="{{sport.rating * 100 | number:'.0-0'}}, 100" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">{{sport.rating * 100 | number:'.0-0'}}%</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ng-template>
 
 </div>

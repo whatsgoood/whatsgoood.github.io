@@ -10,15 +10,15 @@
 }
 
 .sport-cards {
-    margin-top: 7.5vh;
+    padding-top: 30vh;
     display: flex;
-    height: 42.5vh;
+    height: 30vh;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
 }
 
 .weather-card {
-    margin-bottom: 7.5vh;
+    margin-top: 0vh;
     display: flex;
     height: 42.5vh;
     justify-content: center;
@@ -51,10 +51,11 @@
 // Mobile device
 @media (max-width: 512px) {
     .sport-cards {
+        padding-top:10vh;
         display: flex;
-        height: 400px;
+        height: 450px;
         justify-content: center;
-        align-items: center;
+        align-items: baseline;
     }
 
     .weather-card {
