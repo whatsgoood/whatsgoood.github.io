@@ -6,7 +6,6 @@ import { SportComponent } from './sport/sport.component';
 import { GreetingComponent } from './greeting/greeting.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { WeatherComponent } from './weather/weather.component';
 import { ErrorCardComponent } from './cards/error-card/error-card.component';
 import { LoadingCardComponent } from './cards/loading-card/loading-card.component';
 
@@ -18,7 +17,6 @@ import { LoadingCardComponent } from './cards/loading-card/loading-card.componen
     GreetingComponent,
     ToolbarComponent,
     FooterComponent,
-    WeatherComponent,
     ErrorCardComponent,
     LoadingCardComponent
   ],
