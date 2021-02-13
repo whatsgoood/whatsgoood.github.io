@@ -1,67 +1,62 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SportService } from './sport.service';
-import { Sport } from './sport.model';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { SportService } from "./sport.service";
+import { Sport } from "./sport.model";
+import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'app-sport',
-    templateUrl: './sport.component.html',
-    styleUrls: ['./sport.component.scss']
+  selector: "app-sport",
+  templateUrl: "./sport.component.html",
+  styleUrls: ["./sport.component.scss"],
 })
 export class SportComponent implements OnInit, OnDestroy {
-    
-    public sports: Sport[] = [];
-    public sportServiceSub: Subscription = null;
+  public liveSports: Sport[] = [];
+  public sportServiceSub: Subscription = null;
 
-    constructor(
-        private sportService: SportService
-    ) { }
+  constructor(private sportService: SportService) {}
 
-    ngOnInit(): void {
-        this.sportServiceSub = this.sportService.getSportList()
-            .subscribe(
-                data => {
-                    this.populateSportCards(data);
-                },
-                error => {
-                    // TODO: Popup/modal of error card
-                    this.ngOnDestroy();
-                }
-            );
-    }
-
-    ngOnDestroy() {
+  ngOnInit(): void {
+    this.sportServiceSub = this.sportService.getLiveSportList().subscribe(
+      (data) => {
+        this.populateSportCards(data);
+      },
+      (error) => {
+        // TODO: Popup/modal of error card
         this.sportServiceSub.unsubscribe();
-    }
+      }
+    );
+  }
 
-    private populateSportCards(sports: Sport[]) {
-        this.sports = sports.sort((a, b) => (b.rating - a.rating));
-    }
+  ngOnDestroy() {
+    this.sportServiceSub.unsubscribe();
+  }
 
-    public ratingClass(rating: number) {
-        if (rating > 0.6) {
-            return { 'card-green': true }
-        } else if (rating > 0.3) {
-            return { 'card-orange': true }
-        } else {
-            return { 'card-red': true }
-        }
-    }
+  private populateSportCards(sports: Sport[]) {
+    this.liveSports = sports.sort((a, b) => b.rating - a.rating);
+  }
 
-    public isKiting(name: string) {
-        return name === 'Kiting';
+  public ratingClass(rating: number) {
+    if (rating > 0.7) {
+      return { "card-green": true };
+    } else if (rating > 0.3) {
+      return { "card-orange": true };
+    } else {
+      return { "card-red": true };
     }
+  }
 
-    public isSurfing(name: string) {
-        return name === 'Surfing';
-    }
+  public isKiting(name: string) {
+    return name === "Kiting";
+  }
 
-    public isClimbing(name: string) {
-        return name === 'Climbing';
-    }
+  public isSurfing(name: string) {
+    return name === "Surfing";
+  }
 
-    public isCycling(name: string) {
-        return name === 'Cycling';
-    }
+  public isClimbing(name: string) {
+    return name === "Climbing";
+  }
 
+  public isCycling(name: string) {
+    return name === "Cycling";
+  }
 }

@@ -1,10 +1,10 @@
 <div class="card-container">
 
-    <div *ngIf="sports.length === 0; then loading else loaded"></div>
+    <div *ngIf="liveSports.length === 0; then loading else loaded"></div>
 
     <ng-template #loading>
 
-        <div *ngFor="let i of [0,1,2,3]">
+        <div *ngFor="let i of [0,1,2]">
             <app-loading-card></app-loading-card>
         </div>
 
@@ -12,12 +12,11 @@
 
     <ng-template #loaded>
 
-        <div *ngFor="let sport of sports">
+        <div *ngFor="let sport of liveSports">
             <a class="card" [ngClass]="ratingClass(sport.rating)">
                 <img *ngIf="isKiting(sport.name)" src="../../assets/kite.svg">
                 <img *ngIf="isSurfing(sport.name)" src="../../assets/surfing.svg">
                 <img *ngIf="isClimbing(sport.name)" src="../../assets/climbing.svg">
-                <img *ngIf="isCycling(sport.name)" src="../../assets/cycling.svg">
                 <!-- TODO: Create progress component (w/ input rating: number) -->
                 <svg viewBox="0 0 36 36" class="circular-chart">
                     <path class="circle-bg" d="M18 2.0845

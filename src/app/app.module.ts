@@ -8,6 +8,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorCardComponent } from './cards/error-card/error-card.component';
 import { LoadingCardComponent } from './cards/loading-card/loading-card.component';
+import { ForecastComponent } from './forecast/forecast.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LoadingCardComponent } from './cards/loading-card/loading-card.componen
     ToolbarComponent,
     FooterComponent,
     ErrorCardComponent,
-    LoadingCardComponent
+    LoadingCardComponent,
+    ForecastComponent
   ],
   imports: [
     BrowserModule,
