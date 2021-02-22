@@ -9,15 +9,24 @@ import { Sport } from './sport.model';
     providedIn: 'root'
 })
 export class SportService {
-    
-    private sportUrl = environment.baseApiUrl + 'ratings';
+    private liveSportUrl = environment.baseApiUrl + 'ratings/live';
+    // TODO: Move into forecast service
+    private forecastedSportUrl = environment.baseApiUrl + 'ratings/forecast';
 
     constructor(
         private http: HttpClient
     ) { }
 
-    public getSportList() {
-        return this.http.get<Sport[]>(this.sportUrl)
+    public getLiveSportList() {
+        return this.http.get<Sport[]>(this.liveSportUrl)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    public getForecastedSportList() {
+        // TODO: create sport forecast type
+        return this.http.get<any[]>(this.forecastedSportUrl)
             .pipe(
                 catchError(this.handleError)
             );

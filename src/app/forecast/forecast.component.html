@@ -1,0 +1,35 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                <img src="../../assets/clock.svg">
+            </th>
+            <th scope="col">
+                <img src="../../assets/kite.svg">
+            </th>
+            <th scope="col">
+                <img src="../../assets/surfing.svg">
+            </th>
+            <th scope="col">
+                <img src="../../assets/climbing.svg">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let forecast of forecastedSports">
+            <td>{{forecast.time}}H00</td>
+            <td *ngFor="let sport of forecast.ratingList">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path class="circle-bg" d="M18 2.0845
+                                                                      a 15.9155 15.9155 0 0 1 0 31.831
+                                                                      a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" [ngClass]="ratingClass(sport.rating)"
+                        attr.stroke-dasharray="{{forecast.ratingList[0].rating * 100 | number:'.0-0'}}, 100" d="M18 2.0845
+                                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage">{{sport.rating * 100 | number:'.0-0'}}%</text>
+                </svg>
+            </td>
+        </tr>
+    </tbody>
+</table>

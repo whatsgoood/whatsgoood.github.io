@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "server": "cd ../api && python3 server.py",
+    "server": "cd ../whatsgoood.backend && python3 run.py",
     "build": "ng build --prod && mv dist/WhatsGood docs",
     "test": "ng test",
     "lint": "ng lint",
