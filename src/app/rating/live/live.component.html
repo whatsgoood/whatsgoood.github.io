@@ -1,0 +1,35 @@
+<div class="card-container">
+
+    <div *ngIf="liveRatings.length === 0; then loading else loaded"></div>
+
+    <ng-template #loading>
+
+        <div *ngFor="let i of numberOfSport()">
+            <app-loading-card></app-loading-card>
+        </div>
+
+    </ng-template>
+
+    <ng-template #loaded>
+
+        <div *ngFor="let sportRating of liveRatings">
+            <a class="card" [ngClass]="ratingClass(sportRating.rating)">
+                <img *ngIf="isKiting(sportRating.name)" src="../../assets/kite.svg">
+                <img *ngIf="isSurfing(sportRating.name)" src="../../assets/surfing.svg">
+                <img *ngIf="isClimbing(sportRating.name)" src="../../assets/climbing.svg">
+                <!-- TODO: Create progress component (w/ input rating: number) -->
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path class="circle-bg" d="M18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" attr.stroke-dasharray="{{sportRating.rating * 100 | number:'.0-0'}}, 100" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage">{{sportRating.rating * 100 | number:'.0-0'}}%</text>
+                </svg>
+            </a>
+        </div>
+
+    </ng-template>
+
+</div>

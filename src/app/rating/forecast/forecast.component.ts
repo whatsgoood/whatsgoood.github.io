@@ -1,35 +1,34 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Sport } from '../sport/sport.model';
 import { Subscription } from 'rxjs';
-import { SportService } from '../sport/sport.service';
-import { ForecastedSport } from './forecastedSport.model';
+import { ForecastSportRating } from '../rating.model';
+import { RatingService } from '../rating.service';
 
 @Component({
-  selector: "app-forecast",
+  selector: "app-rating-forecast",
   templateUrl: "./forecast.component.html",
   styleUrls: ["./forecast.component.scss"],
 })
 export class ForecastComponent implements OnInit, OnDestroy {
-  public forecastedSports: ForecastedSport[] = [];
-  public forecastedSportServiceSub: Subscription = null;
+  public forecastRatings: ForecastSportRating[] = [];
+  public forecastRatingServiceSub: Subscription = null;
 
-  constructor(private sportService: SportService) {}
+  constructor(private ratingService: RatingService) {}
 
   ngOnInit(): void {
-    this.forecastedSportServiceSub = this.sportService
-      .getForecastedSportList()
+    this.forecastRatingServiceSub = this.ratingService
+      .getForecastRatings()
       .subscribe(
         (data) => {
-          this.forecastedSports = data;
+          this.forecastRatings = data;
         },
         (error) => {
-          this.forecastedSportServiceSub.unsubscribe();
+          this.forecastRatingServiceSub.unsubscribe();
         }
       );
   }
 
   ngOnDestroy() {
-    this.forecastedSportServiceSub.unsubscribe();
+    this.forecastRatingServiceSub.unsubscribe();
   }
 
   public ratingClass(rating: number) {
