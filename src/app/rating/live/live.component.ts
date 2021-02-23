@@ -62,7 +62,7 @@ export class LiveComponent implements OnInit, OnDestroy {
     return name === Sport.climbing;
   }
 
-  public numberOfSport(): number {
-    return Object.keys(Sport).length;
+  public sports(): number[] {
+      return Array(Object.keys(Sport).length);
   }
 }
