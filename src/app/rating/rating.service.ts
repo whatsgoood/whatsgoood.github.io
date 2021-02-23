@@ -3,30 +3,28 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Sport } from './sport.model';
+import { SportRating, ForecastSportRating } from './rating.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SportService {
-    private liveSportUrl = environment.baseApiUrl + 'ratings/live';
-    // TODO: Move into forecast service
-    private forecastedSportUrl = environment.baseApiUrl + 'ratings/forecast';
+export class RatingService {
+    private liveRatingUrl = environment.baseApiUrl + 'ratings/live';
+    private forecastRatingUrl = environment.baseApiUrl + 'ratings/forecast';
 
     constructor(
         private http: HttpClient
     ) { }
 
-    public getLiveSportList() {
-        return this.http.get<Sport[]>(this.liveSportUrl)
+    public getLiveRatings() {
+        return this.http.get<SportRating[]>(this.liveRatingUrl)
             .pipe(
                 catchError(this.handleError)
             );
     }
 
-    public getForecastedSportList() {
-        // TODO: create sport forecast type
-        return this.http.get<any[]>(this.forecastedSportUrl)
+    public getForecastRatings() {
+        return this.http.get<ForecastSportRating[]>(this.forecastRatingUrl)
             .pipe(
                 catchError(this.handleError)
             );
